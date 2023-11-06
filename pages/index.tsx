@@ -15,7 +15,7 @@ const utmProjection =
   "+proj=utm +zone=33 +ellps=WGS84 +datum=WGS84 +units=m +no_defs";
 
 export default function index() {
-  const [Prediction, setPrediction] = React.useState("0%");
+  const [Prediction, setPrediction] = React.useState("0");
   const [isLoading, setIsLoading] = React.useState(false);
   const [isError, setIsError] = React.useState(false);
   const [getCordinates, setCordinates] = React.useState({
@@ -51,7 +51,7 @@ export default function index() {
       ])
       .then((res) => {
         const data = JSON.parse(res.data?.prediction);
-        setPrediction(`${Number(data[0].toFixed(2))}%`);
+        setPrediction(`${Number(data[0].toFixed(2))}`);
         console.log("213", data)
       })
       .catch((err) => {
@@ -85,7 +85,7 @@ export default function index() {
             </Alert>
           )}
           <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
-            Predication
+            Prediction
           </h4>
 
           {isLoading ? (
